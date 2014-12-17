@@ -1,8 +1,22 @@
 package paizaio
 
+import "errors"
+import "fmt"
 import "net/url"
 
 func (a *API) RunnerCreate(v url.Values) (*Runner, error) {
+	lang := v.Get("language")
+	included := false
+	for _, v := range Languages {
+		if v == lang {
+			included = true
+			break
+		}
+	}
+	if !included {
+		return nil, errors.New(fmt.Sprint("%s is not allowed language.", lang))
+	}
+
 	resp := &Runner{}
 	err := a.apiPost(BaseURL+"/runners/create", v, resp)
 	if err != nil {

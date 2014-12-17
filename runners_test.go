@@ -24,4 +24,10 @@ func TestRunnerCreate(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+
+	v.Set("language", "Golang")
+	_, err = api.RunnerCreate(v)
+	if err == nil {
+		t.Error("Should raise error when dont allowed language. But not raise.")
+	}
 }

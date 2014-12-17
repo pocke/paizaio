@@ -27,6 +27,33 @@ type Details struct {
 	Result   string `json:"result"`
 }
 
+var Languages = []string{
+	"c",
+	"cpp",
+	"objective-c",
+	"java",
+	"scala",
+	"csharp",
+	"go",
+	"haskell",
+	"erlang",
+	"perl",
+	"python",
+	"python3",
+	"ruby",
+	"php",
+	"bash",
+	"r",
+	"javascript",
+	"coffeescript",
+	"vb",
+	"cobol",
+	"fsharp",
+	"d",
+	"clojure",
+	"mysql",
+}
+
 const (
 	StatusRunning   = "running"
 	StatusCompleted = "completed"
