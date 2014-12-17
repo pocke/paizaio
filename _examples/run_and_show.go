@@ -34,7 +34,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		if s.Status != "running" {
+		if s.Status != paizaio.StatusRunning {
 			break
 		}
 

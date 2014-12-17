@@ -26,3 +26,12 @@ type Details struct {
 	Memory   int    `json:"memory"`
 	Result   string `json:"result"`
 }
+
+const (
+	StatusRunning   = "running"
+	StatusCompleted = "completed"
+
+	ResultSuccess = "success"
+	ResultFailure = "failure"
+	ResultError   = "error"
+)
