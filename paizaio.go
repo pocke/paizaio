@@ -7,5 +7,5 @@ const (
 )
 
 type API struct {
-	HttpClient *http.Client
+	HTTPClient *http.Client
 }

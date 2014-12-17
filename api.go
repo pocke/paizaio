@@ -8,7 +8,7 @@ import (
 
 func NewAPI() *API {
 	api := &API{
-		HttpClient: http.DefaultClient,
+		HTTPClient: http.DefaultClient,
 	}
 
 	return api
@@ -22,14 +22,14 @@ func (a *API) apiGet(url string, v url.Values, data interface{}) error {
 
 	req.URL.RawQuery = v.Encode()
 
-	resp, err := a.HttpClient.Do(req)
+	resp, err := a.HTTPClient.Do(req)
 	defer resp.Body.Close()
 
 	return decode(resp, data)
 }
 
 func (a *API) apiPost(url string, v url.Values, data interface{}) error {
-	resp, err := a.HttpClient.PostForm(url, v)
+	resp, err := a.HTTPClient.PostForm(url, v)
 	if err != nil {
 		return err
 	}
