@@ -3,7 +3,11 @@ package paizaio_test
 import (
 	"net/url"
 	"testing"
+
+	"github.com/pocke/paizaio"
 )
+
+var api = paizaio.NewAPI()
 
 const code = `
 package main

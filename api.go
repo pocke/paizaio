@@ -6,6 +6,14 @@ import (
 	"net/url"
 )
 
+const (
+	BaseURL = "http://api.paiza.io"
+)
+
+type API struct {
+	HTTPClient *http.Client
+}
+
 func NewAPI() *API {
 	api := &API{
 		HTTPClient: http.DefaultClient,
