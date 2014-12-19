@@ -1,3 +1,6 @@
+This program is in the process of being developed. There may be a destructive change.
+=======================================================================================
+
 [![Build Status](https://travis-ci.org/pocke/paizaio.svg?branch=master)](https://travis-ci.org/pocke/paizaio)
 
 
