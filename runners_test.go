@@ -8,6 +8,17 @@ import (
 )
 
 var api = paizaio.NewAPI()
+var idCh = make(chan string, 1)
+var getID = func() func() string {
+	var id string
+	return func() string {
+		if id != "" {
+			return id
+		}
+		id = <-idCh
+		return id
+	}
+}()
 
 const code = `
 package main
@@ -28,10 +39,29 @@ func TestRunnerCreate(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+	idCh <- r.ID
 
 	v.Set("language", "Golang")
 	_, err = api.RunnerCreate(v)
 	if err == nil {
 		t.Error("Should raise error when dont allowed language. But not raise.")
 	}
+}
+
+func TestRunnerStatus(t *testing.T) {
+	id := getID()
+	r, err := api.RunnerStatus(id)
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(r)
+}
+
+func TestRunnerDetails(t *testing.T) {
+	id := getID()
+	d, err := api.RunnerDetails(id)
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(d)
 }
