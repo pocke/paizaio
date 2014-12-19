@@ -1,10 +1,17 @@
 package paizaio
 
+type respObj interface {
+	getError() error
+}
+
 type Runner struct {
 	ID     string `json:"id"`
 	Status string `json:"status"`
-	Error  string `json:"error"`
+
+	err string `json:"error"`
 }
+
+var _ respObj = &Runner{}
 
 type Details struct {
 	ID       string `json:"id"`
@@ -25,7 +32,11 @@ type Details struct {
 	Time     string `json:"time"`
 	Memory   int    `json:"memory"`
 	Result   string `json:"result"`
+
+	err string `json:"error"`
 }
+
+var _ respObj = &Details{}
 
 var Languages = []string{
 	"c",
@@ -62,3 +73,17 @@ const (
 	ResultFailure = "failure"
 	ResultError   = "error"
 )
+
+func (r *Runner) getError() error {
+	if r.err == "" {
+		return nil
+	}
+	return newAPIError(r.err)
+}
+
+func (d *Details) getError() error {
+	if d.err == "" {
+		return nil
+	}
+	return newAPIError(d.err)
+}

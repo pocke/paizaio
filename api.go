@@ -22,7 +22,7 @@ func NewAPI() *API {
 	return api
 }
 
-func (a *API) apiGet(url string, v url.Values, data interface{}) error {
+func (a *API) apiGet(url string, v url.Values, data respObj) error {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return err
@@ -36,7 +36,7 @@ func (a *API) apiGet(url string, v url.Values, data interface{}) error {
 	return decode(resp, data)
 }
 
-func (a *API) apiPost(url string, v url.Values, data interface{}) error {
+func (a *API) apiPost(url string, v url.Values, data respObj) error {
 	resp, err := a.HTTPClient.PostForm(url, v)
 	if err != nil {
 		return err
@@ -46,6 +46,10 @@ func (a *API) apiPost(url string, v url.Values, data interface{}) error {
 	return decode(resp, data)
 }
 
-func decode(resp *http.Response, data interface{}) error {
-	return json.NewDecoder(resp.Body).Decode(data)
+func decode(resp *http.Response, data respObj) error {
+	err := json.NewDecoder(resp.Body).Decode(data)
+	if err != nil {
+		return err
+	}
+	return data.getError()
 }
