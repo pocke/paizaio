@@ -55,6 +55,13 @@ func TestRunnerStatus(t *testing.T) {
 		t.Error(err)
 	}
 	t.Log(r)
+
+	invalidID := "ほげふがぴよぴよ"
+	r, err = api.RunnerStatus(invalidID)
+	if err == nil {
+		t.Logf("%+v", r)
+		t.Error("Should return error when ID doesn't exists. But not return error.")
+	}
 }
 
 func TestRunnerDetails(t *testing.T) {
@@ -64,4 +71,11 @@ func TestRunnerDetails(t *testing.T) {
 		t.Error(err)
 	}
 	t.Log(d)
+
+	invalidID := "ほげふがぴよぴよ"
+	d, err = api.RunnerDetails(invalidID)
+	if err == nil {
+		t.Logf("%+v", d)
+		t.Error("Should return error when ID doesn't exists. But not return error.")
+	}
 }

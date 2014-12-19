@@ -11,3 +11,5 @@ func newAPIError(body string) *APIError {
 func (a *APIError) Error() string {
 	return a.Body
 }
+
+var _ error = &APIError{}

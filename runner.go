@@ -8,7 +8,7 @@ type Runner struct {
 	ID     string `json:"id"`
 	Status string `json:"status"`
 
-	err string `json:"error"`
+	Error string `json:"error"`
 }
 
 var _ respObj = &Runner{}
@@ -33,7 +33,7 @@ type Details struct {
 	Memory   int    `json:"memory"`
 	Result   string `json:"result"`
 
-	err string `json:"error"`
+	Error string `json:"error"`
 }
 
 var _ respObj = &Details{}
@@ -75,15 +75,15 @@ const (
 )
 
 func (r *Runner) getError() error {
-	if r.err == "" {
+	if r.Error == "" {
 		return nil
 	}
-	return newAPIError(r.err)
+	return newAPIError(r.Error)
 }
 
 func (d *Details) getError() error {
-	if d.err == "" {
+	if d.Error == "" {
 		return nil
 	}
-	return newAPIError(d.err)
+	return newAPIError(d.Error)
 }
