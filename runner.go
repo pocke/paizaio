@@ -38,6 +38,7 @@ type Details struct {
 
 var _ respObj = &Details{}
 
+// Languages is a list of languages supported by paiza.io.
 var Languages = []string{
 	"c",
 	"cpp",
@@ -65,10 +66,14 @@ var Languages = []string{
 	"mysql",
 }
 
+// Status codes are value of Runner.Status or Details.Status.
 const (
 	StatusRunning   = "running"
 	StatusCompleted = "completed"
+)
 
+// Results are value of Details.Result.
+const (
 	ResultSuccess = "success"
 	ResultFailure = "failure"
 	ResultError   = "error"

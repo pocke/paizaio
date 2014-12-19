@@ -14,6 +14,7 @@ type API struct {
 	HTTPClient *http.Client
 }
 
+// NewAPI returns a API struct
 func NewAPI() *API {
 	api := &API{
 		HTTPClient: http.DefaultClient,
