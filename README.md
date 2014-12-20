@@ -2,6 +2,8 @@ This program is in the process of being developed. There may be a destructive ch
 =======================================================================================
 
 [![Build Status](https://travis-ci.org/pocke/paizaio.svg?branch=master)](https://travis-ci.org/pocke/paizaio)
+[![Coverage Status](https://img.shields.io/coveralls/pocke/paizaio.svg)](https://coveralls.io/r/pocke/paizaio)
+[![GoDoc](https://godoc.org/github.com/pocke/paizaio?status.svg)](https://godoc.org/github.com/pocke/paizaio)
 
 
 paizaio

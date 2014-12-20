@@ -5,5 +5,10 @@ go:
   - 1.4
   - tip
 
+before_install:
+  - go get github.com/axw/gocov/gocov
+  - go get github.com/mattn/goveralls
+  - go get golang.org/x/tools/cmd/cover
+
 script:
-  - go test -v -race
+  - $HOME/gopath/bin/goveralls -repotoken 1zI1s9Ak7Y7Xt9414Xsqo5U7BQ8exthqu
